@@ -1,0 +1,9 @@
+Account Created
+Account Number: 1114
+USER ID- r: kunal
+Account Holder Name: kunal
+PIN: 1234
+Balance: 14500.0
+Date: Fri May 10 12:35:28 IST 2024
+
+

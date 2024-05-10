@@ -1,0 +1,19 @@
+Account Created
+Account Number: 1111
+USER ID- msoni
+Account Holder Name: Mayur Soni
+PIN: 1111
+Balance: 11000.0
+Date: Fri May 10 15:10:01 IST 2024
+
+
+Deposit: 2000.0
+Date: Fri May 10 15:10:29 IST 2024
+Account Number: 1111
+Remaining Balance: 11000.0
+
+Transferred: 2000.0
+Date: Fri May 10 15:10:29 IST 2024
+Account Number: 1111
+Remaining Balance: 11000.0
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;sarthi&apos;&#x0D;&#x0A;- Original project: &apos;sarthi&apos;&#x0D;&#x0A;- Original element: &apos;com.sarthi.controller.Trip.java&apos;" description="Delete element" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.sarthi.controller{Trip.java" elements="1" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1709962950252" subPackages="false" version="1.0"/>
+</session>

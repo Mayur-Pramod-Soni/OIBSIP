@@ -1,0 +1,9 @@
+Account Created
+Account Number: 1115
+USER ID- r: mj
+Account Holder Name: mj
+PIN: 1111
+Balance: 35000.0
+Date: Fri May 10 12:28:34 IST 2024
+
+

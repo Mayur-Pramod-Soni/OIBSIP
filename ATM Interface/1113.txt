@@ -1,0 +1,9 @@
+Account Created
+Account Number: 1113
+USER ID- r: 
+Account Holder Name: 
+PIN: 1111
+Balance: 12000.0
+Date: Fri May 10 12:35:01 IST 2024
+
+

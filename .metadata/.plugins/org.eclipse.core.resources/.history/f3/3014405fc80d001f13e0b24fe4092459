@@ -1,0 +1,207 @@
+package com.sarthi.model;
+
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "Tourist_Details")
+public class Tourist implements UserDetails{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "tourist_id")
+	private Long tourist_id;
+	
+	@Column(name = "tourist_name")
+	private String tourist_name;
+	
+	@Column(name = "email_id")
+	private String tourist_email;
+	
+	@Column(name = "password")
+	private String password;
+	
+	@Column(name="contact_no")
+	private String contact_no ;
+	
+	@Column(name="destination_places")
+	private String destination_places ;
+	
+	@OneToMany
+	private List<Trip> trips ;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "tourist", referencedColumnName = "tourist_id"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))
+	private Set<Role> roles = new HashSet<>();
+	
+//	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "guide", referencedColumnName = "guide_id"), inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))
+//	private Set<Role> roles = new HashSet<>();
+
+	// User Details Methods
+
+		@Override
+//		@JsonDeserialize(contentUsing = GrantedAuthorityDeserializer.class)
+		public Collection<? extends GrantedAuthority> getAuthorities() {
+			List<SimpleGrantedAuthority> authories = this.roles.stream()
+					.map((role) -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+			return authories;
+		}
+
+		@Override
+		public String getUsername() {
+			return this.tourist_email;
+		}
+
+		@Override
+		public boolean isAccountNonExpired() {
+			return true;
+		}
+
+		@Override
+		public boolean isAccountNonLocked() {
+			return true;
+		}
+
+		@Override
+		public boolean isCredentialsNonExpired() {
+			return true;
+		}
+
+		@Override
+		public boolean isEnabled() {
+			return true;
+		}
+		
+		// ----?
+
+		public Tourist get() {
+			// TODO Auto-generated method stub
+			Tourist tourist = new Tourist();
+			return tourist ;
+		}	
+	
+//	@OneToMany
+//	private List<DestinationCity> destination_Place_Name  ;
+//
+//	private Tourist() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//
+//	private Tourist(Long tourist_id, String tourist_name, String tourist_email, String password, String contact_no,
+//			String destination_places, List<Trip> trips) {
+//		super();
+//		this.tourist_id = tourist_id;
+//		this.tourist_name = tourist_name;
+//		this.tourist_email = tourist_email;
+//		this.password = password;
+//		this.contact_no = contact_no;
+//		this.destination_places = destination_places;
+//		this.trips = trips;
+////		this.destination_Place_Name = destination_Place_Name;
+//	}
+//
+//	private Tourist(String tourist_name, String tourist_email, String password, String contact_no) {
+//		super();
+//		this.tourist_name = tourist_name;
+//		this.tourist_email = tourist_email;
+//		this.password = password;
+//		this.contact_no = contact_no;
+//	}
+//
+//	public Long getTourist_id() {
+//		return tourist_id;
+//	}
+//
+//	public void setTourist_id(Long tourist_id) {
+//		this.tourist_id = tourist_id;
+//	}
+//
+//	public String getTourist_name() {
+//		return tourist_name;
+//	}
+//
+//	public void setTourist_name(String tourist_name) {
+//		this.tourist_name = tourist_name;
+//	}
+//
+//	public String getTourist_email() {
+//		return tourist_email;
+//	}
+//
+//	public void setTourist_email(String tourist_email) {
+//		this.tourist_email = tourist_email;
+//	}
+//
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public String getContact_no() {
+//		return contact_no;
+//	}
+//
+//	public void setContact_no(String contact_no) {
+//		this.contact_no = contact_no;
+//	}
+//
+//	public String getDestination_places() {
+//		return destination_places;
+//	}
+//
+//	public void setDestination_places(String destination_places) {
+//		this.destination_places = destination_places;
+//	}
+//
+//	public List<Trip> getTrips() {
+//		return trips;
+//	}
+//
+//	public void setTrips(List<Trip> trips) {
+//		this.trips = trips;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Tourist [tourist_id=" + tourist_id + ", tourist_name=" + tourist_name + ", tourist_email="
+//				+ tourist_email + ", password=" + password + ", contact_no=" + contact_no + ", destination_places="
+//				+ destination_places + ", trips=" + trips + "]";
+//	}
+	
+	
+}
